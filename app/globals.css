@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme: SAMVAAD Refined Palette */
+    --background: 30, 40%, 97%; /* Warm Mist #F9F5F0 */
+    --foreground: 0, 0%, 18%; /* Deep Charcoal #2E2E2E */
+    --primary: 18, 60%, 57%; /* Clay Terracotta #D96F4B */
+    --primary-foreground: 0, 0%, 100%; /* White */
+    --secondary: 241, 25%, 47%; /* Dusty Indigo #5E5C91 */
+    --secondary-foreground: 0, 0%, 100%; /* White */
+    --accent: 208, 40%, 75%; /* Soothing Sky #A2C0DD */
+    --accent-foreground: 0, 0%, 100%; /* White */
+    --muted: 30, 40%, 97%; /* Warm Mist (for muted backgrounds) */
+    --muted-foreground: 0, 0%, 40%; /* #666666 (for muted text) */
+    --card: 0, 0%, 100%; /* White */
+    --card-foreground: 0, 0%, 18%; /* Deep Charcoal */
+    --popover: 0, 0%, 100%; /* White */
+    --popover-foreground: 0, 0%, 18%; /* Deep Charcoal */
+    --border: 0, 0%, 92%; /* Light Gray #EAEAEA (from previous palette, fits well) */
+    --input: 0, 0%, 92%; /* Light Gray #EAEAEA */
+    --ring: 18, 60%, 57%; /* Clay Terracotta */
+
+    --destructive: 0, 60%, 63%; /* Dust Rose #D86767 */
+    --destructive-foreground: 0, 0%, 100%;
+    --success: 100, 20%, 70%; /* Sage Green #A4C5A1 */
+    --success-foreground: 0, 0%, 100%;
+    --warning: 39, 80%, 72%; /* Soft Amber #F5C37D */
+    --warning-foreground: 0, 0%, 100%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Theme: SAMVAAD Refined Palette */
+    --background: 240, 15%, 12%; /* Charcoal Plum #1F1D2B */
+    --foreground: 25, 40%, 94%; /* Pale Sand #F3ECE7 */
+    --primary: 18, 60%, 57%; /* Clay Terracotta #D96F4B */
+    --primary-foreground: 0, 0%, 100%; /* White */
+    --secondary: 241, 25%, 47%; /* Dusty Indigo #5E5C91 */
+    --secondary-foreground: 0, 0%, 100%; /* White */
+    --accent: 208, 40%, 75%; /* Soothing Sky #A2C0DD */
+    --accent-foreground: 0, 0%, 100%; /* White */
+    --muted: 240, 15%, 15%; /* Slightly lighter Charcoal Plum */
+    --muted-foreground: 25, 40%, 80%; /* Lighter Pale Sand */
+    --card: 240, 15%, 15%; /* Slightly lighter Charcoal Plum */
+    --card-foreground: 25, 40%, 94%; /* Pale Sand */
+    --popover: 240, 15%, 15%; /* Slightly lighter Charcoal Plum */
+    --popover-foreground: 25, 40%, 94%; /* Pale Sand */
+    --border: 240, 15%, 20%; /* Darker border */
+    --input: 240, 15%, 20%; /* Darker input */
+    --ring: 18, 60%, 57%; /* Clay Terracotta */
+
+    --destructive: 0, 60%, 63%; /* Dust Rose #D86767 */
+    --destructive-foreground: 0, 0%, 100%;
+    --success: 100, 20%, 70%; /* Sage Green #A4C5A1 */
+    --success-foreground: 0, 0%, 100%;
+    --warning: 39, 80%, 72%; /* Soft Amber #F5C37D */
+    --warning-foreground: 0, 0%, 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body; /* Use font-body for default */
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading; /* Apply Playfair Display to headings */
+  }
+}
