@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 const openSans = Open_Sans({
   subsets: ["latin"],
   variable: "--font-open-sans",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
   display: "swap",
 })
 
@@ -16,14 +16,15 @@ const openSans = Open_Sans({
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair-display",
-  weight: ["400", "500", "600", "700"],
+  weight: ["700", "800"],
   display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "SAMVAAD - Mental Wellness Platform",
-  description: "Behtar Samaaj with Behtar Samajh – A youth mental wellness and community engagement platform.",
-    generator: 'v0.dev'
+  title: "SAMVAAD | Interactive Report",
+  description:
+    "A single-page interactive report for SAMVAAD, focusing on youth mental wellness and community engagement.",
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -32,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={cn("min-h-screen bg-background font-body antialiased", openSans.variable, playfairDisplay.variable)}
       >

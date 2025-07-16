@@ -1,97 +1,44 @@
 "use client"
 
 import { useState } from "react"
-import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
+import HeroSection from "@/components/sections/hero-section"
+import MarqueeSlider from "@/components/sections/marquee-slider"
+import ChallengeSection from "@/components/sections/challenge-section"
+import MissionCorePillars from "@/components/sections/mission-core-pillars"
+import StrategicApproach from "@/components/sections/strategic-approach"
+import ImpactTestimonials from "@/components/sections/impact-testimonials"
+import PreFooterContact from "@/components/sections/pre-footer-contact"
 import Footer from "@/components/footer"
-import HomePage from "@/components/pages/home-page"
-import AboutPage from "@/components/pages/about-page"
-import ServicesPage from "@/components/pages/services-page"
-import BlogPage from "@/components/pages/blog-page"
-import ContactPage from "@/components/pages/contact-page"
-import StudentDashboard from "@/components/pages/student-dashboard"
-import AssessmentIntro from "@/components/pages/assessment-intro"
-import LoginScreen from "@/components/pages/login-screen"
-import CommunityForum from "@/components/pages/community-forum"
-import EventDetailsPage from "@/components/pages/event-details-page"
-import PodcastIndex from "@/components/pages/podcast-index"
-import MerchPage from "@/components/pages/merch-page"
-import FloatingCTA from "@/components/floating-cta"
+import FAB from "@/components/fab"
+import ContactModal from "@/components/contact-modal"
 
-// Define a type for the page names
-type PageName =
-  | "home"
-  | "about"
-  | "services"
-  | "blog"
-  | "contact"
-  | "student-dashboard"
-  | "assessment-intro"
-  | "login-screen"
-  | "community-forum"
-  | "event-details"
-  | "podcast-index"
-  | "merch"
+export default function InteractiveReportPage() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageName>("home")
-  const [isTransitioning, setIsTransitioning] = useState(false)
-
-  // Handle page transitions with a fade effect
-  const setPage = (page: PageName) => {
-    setIsTransitioning(true)
-    setTimeout(() => {
-      setCurrentPage(page)
-      setIsTransitioning(false)
-    }, 300) // Duration of the fade-out animation
+  const handleOpenContactModal = () => {
+    setIsContactModalOpen(true)
   }
 
-  // Render the current page component
-  const renderPage = () => {
-    switch (currentPage) {
-      case "home":
-        return <HomePage setPage={setPage} />
-      case "about":
-        return <AboutPage />
-      case "services":
-        return <ServicesPage />
-      case "blog":
-        return <BlogPage />
-      case "contact":
-        return <ContactPage />
-      case "student-dashboard":
-        return <StudentDashboard setPage={setPage} />
-      case "assessment-intro":
-        return <AssessmentIntro setPage={setPage} />
-      case "login-screen":
-        return <LoginScreen setPage={setPage} />
-      case "community-forum":
-        return <CommunityForum />
-      case "event-details":
-        return <EventDetailsPage setPage={setPage} />
-      case "podcast-index":
-        return <PodcastIndex />
-      case "merch":
-        return <MerchPage />
-      default:
-        return <HomePage setPage={setPage} />
-    }
+  const handleCloseContactModal = () => {
+    setIsContactModalOpen(false)
   }
 
   return (
-    <ThemeProvider>
-      <div className="flex flex-col min-h-screen">
-        <Header currentPage={currentPage} setPage={setPage} />
-        <div
-          className={`flex-1 transition-opacity duration-300 ease-in-out ${
-            isTransitioning ? "opacity-0" : "opacity-100"
-          }`}
-        >
-          {renderPage()}
-        </div>
-        <Footer />
-        <FloatingCTA />
-      </div>
-    </ThemeProvider>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-1">
+        <HeroSection />
+        <MarqueeSlider />
+        <ChallengeSection />
+        <MissionCorePillars />
+        <StrategicApproach />
+        <ImpactTestimonials />
+        <PreFooterContact />
+      </main>
+      <Footer />
+      <FAB onOpenContactModal={handleOpenContactModal} />
+      <ContactModal isOpen={isContactModalOpen} onClose={handleCloseContactModal} />
+    </div>
   )
 }

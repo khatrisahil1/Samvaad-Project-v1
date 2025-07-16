@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
+import { MessageSquare } from "lucide-react" // Import an icon
 
 export default function FloatingCTA() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -51,10 +52,15 @@ export default function FloatingCTA() {
     <>
       <Button
         onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-6 right-6 z-50 rounded-full h-16 w-16 md:h-20 md:w-20 text-lg md:text-xl font-body font-semibold shadow-lg bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center text-center leading-tight"
+        className="fixed bottom-6 right-6 z-50 rounded-full h-16 w-16 md:h-20 md:w-20 text-lg md:text-xl font-body font-semibold shadow-lg bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center text-center leading-tight
+                   group overflow-hidden transition-all duration-300 ease-in-out
+                   hover:w-auto hover:px-6" // Expand width and add horizontal padding on hover
         aria-label="Connect with Us"
       >
-        Connect with Us
+        <MessageSquare className="h-8 w-8 md:h-10 md:w-10 group-hover:mr-2 transition-all duration-300 ease-in-out" />{" "}
+        {/* Icon always visible, moves left on hover */}
+        <span className="hidden group-hover:inline-block whitespace-nowrap">Connect with Us</span>{" "}
+        {/* Text hidden by default, appears on hover */}
       </Button>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
