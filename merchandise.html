@@ -1,381 +1,263 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Chosen Palette: Serene Sage & Stone -->
-    <!-- Application Structure Plan: A single-page application for the merchandise store. The structure guides the user from a hero section to the product grid, explains the purpose of the store, and provides a clear call to action. -->
-    <!-- Visualization & Content Choices: 1. Product Grid: A responsive grid displays merchandise with clear images, titles, prices, and "Add to Cart" buttons for a standard e-commerce experience. 2. Cart Functionality: A floating action button and a modal provide a non-intrusive but always accessible shopping cart. 3. Footer Design: The footer is updated to match the user's screenshot, featuring a stylized SVG logo that overlaps the footer section for a unique visual effect, enhancing brand identity. -->
-    <!-- CONFIRMATION: The footer now includes an embedded SVG graphic that mimics the 'footer-hands.svg' from the screenshot. The footer layout has been updated with links and copyright information as requested. -->
+import React, { useState, useEffect } from 'react';
 
-    <title>SAMVAAD | Merchandise Store</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #F5F5F4; /* Light Stone Gray */
-            color: #36454F; /* Dark Slate */
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-        .marquee {
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-        }
-        .marquee-content {
-            display: flex;
-            animation: marquee 30s linear infinite;
-            min-width: 200%;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .modal, .cart-modal {
-            transition: opacity 0.25s ease;
-        }
-        .modal-content, .cart-modal-content {
-             transition: transform 0.25s ease;
-        }
-        .product-card {
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .product-card:hover {
-            box-shadow: 0 8px 32px 0 rgba(54,69,79,0.10);
-            transform: translateY(-4px) scale(1.02);
-        }
-    </style>
-</head>
-<body class="antialiased">
+// Tailwind CSS is assumed to be set up in the project.
+// In a real React project, you would install it via npm/yarn.
+// For this example, we'll use the class names directly.
+// Make sure you have a `footer-hands.svg` file in your `public` folder.
 
-    <!-- Header -->
-    <header id="header" class="bg-[#F5F5F4]/80 backdrop-blur-lg sticky top-0 z-40">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-[#36454F]">SAMVAAD</h1>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#shop" class="hover:text-[#879A74] transition-colors">Shop</a>
-                <a href="#about" class="hover:text-[#879A74] transition-colors">About</a>
-                <a href="#contact" class="hover:text-[#879A74] transition-colors">Contact</a>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#shop" class="block py-2 px-6 hover:bg-[#FFFFF0]">Shop</a>
-            <a href="#about" class="block py-2 px-6 hover:bg-[#FFFFF0]">About</a>
-            <a href="#contact" class="block py-2 px-6 hover:bg-[#FFFFF0]">Contact</a>
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="py-20 md:py-32 text-center bg-[#FFFFF0]">
-            <div class="container mx-auto px-6">
-                <div class="max-w-3xl mx-auto">
-                    <img src="https://placehold.co/400x200/879A74/FFFFF0?text=SAMVAAD+Merch" alt="SAMVAAD Merchandise" class="w-full max-w-md mx-auto mb-8 rounded-lg shadow-lg"
-                    onerror="this.onerror=null; this.src='https://placehold.co/400x200/cccccc/333333?text=Image+Not+Found';">
-                    <h1 class="text-5xl md:text-7xl font-extrabold text-[#36454F] mb-4">SAMVAAD Store</h1>
-                    <p class="text-lg md:text-xl text-[#36454F]/80 mb-8">Wear your values. Support the movement. Shop exclusive SAMVAAD merchandise.</p>
-                    <a href="#shop" class="bg-[#879A74] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#6f815a] transition-transform transform hover:scale-105">Shop Now</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Marquee Slider -->
-        <div class="bg-[#36454F] text-[#F5F5F4] py-3 marquee">
-            <div class="marquee-content">
-                <div class="flex space-x-12 mx-6">
-                    <span>Wear Your Values</span><span>•</span><span>Support The Movement</span><span>•</span><span>Limited Edition</span><span>•</span><span>Expression</span><span>•</span><span>Healing</span><span>•</span><span>Awareness</span>
-                </div>
-                <div class="flex space-x-12 mx-6">
-                   <span>Wear Your Values</span><span>•</span><span>Support The Movement</span><span>•</span><span>Limited Edition</span><span>•</span><span>Expression</span><span>•</span><span>Healing</span><span>•</span><span>Awareness</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Merchandise Grid -->
-        <section id="shop" class="py-16 md:py-24">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold mb-2">Featured Merchandise</h2>
-                    <p class="text-lg text-[#36454F]/70 max-w-3xl mx-auto">Every purchase supports our mission of dialogue, healing, and awareness.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-                    <!-- Product 1 -->
-                    <div class="bg-white p-6 rounded-lg shadow-md product-card flex flex-col">
-                        <img src="https://placehold.co/300x300/879A74/FFFFF0?text=T-Shirt" alt="SAMVAAD T-Shirt" class="mb-4 rounded" onerror="this.onerror=null; this.src='https://placehold.co/300x300/cccccc/333333?text=Image+Not+Found';">
-                        <h3 class="text-xl font-bold text-[#879A74] mb-2">SAMVAAD T-Shirt</h3>
-                        <p class="text-[#36454F]/80 mb-2 flex-1">Soft, premium cotton. Show your support in style.</p>
-                        <div class="font-semibold text-lg mb-4">₹499</div>
-                        <button class="add-to-cart bg-[#879A74] text-white py-2 rounded font-semibold hover:bg-[#6f815a]" data-id="1" data-name="SAMVAAD T-Shirt" data-price="499">Add to Cart</button>
-                    </div>
-                    <!-- Product 2 -->
-                    <div class="bg-white p-6 rounded-lg shadow-md product-card flex flex-col">
-                        <img src="https://placehold.co/300x300/36454F/F5F5F4?text=Mug" alt="SAMVAAD Mug" class="mb-4 rounded" onerror="this.onerror=null; this.src='https://placehold.co/300x300/cccccc/333333?text=Image+Not+Found';">
-                        <h3 class="text-xl font-bold text-[#879A74] mb-2">SAMVAAD Mug</h3>
-                        <p class="text-[#36454F]/80 mb-2 flex-1">Ceramic mug for your daily inspiration.</p>
-                        <div class="font-semibold text-lg mb-4">₹299</div>
-                        <button class="add-to-cart bg-[#879A74] text-white py-2 rounded font-semibold hover:bg-[#6f815a]" data-id="2" data-name="SAMVAAD Mug" data-price="299">Add to Cart</button>
-                    </div>
-                    <!-- Product 3 -->
-                    <div class="bg-white p-6 rounded-lg shadow-md product-card flex flex-col">
-                        <img src="https://placehold.co/300x300/879A74/36454F?text=Notebook" alt="SAMVAAD Notebook" class="mb-4 rounded" onerror="this.onerror=null; this.src='https://placehold.co/300x300/cccccc/333333?text=Image+Not+Found';">
-                        <h3 class="text-xl font-bold text-[#879A74] mb-2">SAMVAAD Notebook</h3>
-                        <p class="text-[#36454F]/80 mb-2 flex-1">Jot down your thoughts and ideas.</p>
-                        <div class="font-semibold text-lg mb-4">₹199</div>
-                        <button class="add-to-cart bg-[#879A74] text-white py-2 rounded font-semibold hover:bg-[#6f815a]" data-id="3" data-name="SAMVAAD Notebook" data-price="199">Add to Cart</button>
-                    </div>
-                    <!-- Product 4 -->
-                    <div class="bg-white p-6 rounded-lg shadow-md product-card flex flex-col">
-                        <img src="https://placehold.co/300x300/36454F/879A74?text=Sticker+Pack" alt="SAMVAAD Sticker Pack" class="mb-4 rounded" onerror="this.onerror=null; this.src='https://placehold.co/300x300/cccccc/333333?text=Image+Not+Found';">
-                        <h3 class="text-xl font-bold text-[#879A74] mb-2">Sticker Pack</h3>
-                        <p class="text-[#36454F]/80 mb-2 flex-1">Decorate your world with SAMVAAD stickers.</p>
-                        <div class="font-semibold text-lg mb-4">₹99</div>
-                        <button class="add-to-cart bg-[#879A74] text-white py-2 rounded font-semibold hover:bg-[#6f815a]" data-id="4" data-name="Sticker Pack" data-price="99">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Merchandise Section -->
-        <section id="about" class="py-16 md:py-24 bg-[#FFFFF0]">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold mb-2">Why Shop With Us?</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class=" p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold text-[#879A74] mb-3">Quality & Purpose</h3>
-                        <p>Every item is designed with care and meaning, reflecting our core values of expression, empathy, empowerment, and engagement.</p>
-                    </div>
-                    <div class=" p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold text-[#879A74] mb-3">Support the Cause</h3>
-                        <p>Your purchase directly funds workshops, events, and outreach programs for youth mental health and well-being.</p>
-                    </div>
-                    <div class=" p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold text-[#879A74] mb-3">Limited Edition</h3>
-                        <p>Our merchandise is exclusive and limited—grab yours before it's gone and be part of the movement!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact/CTA Section -->
-        <section id="contact" class="bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/36454F/F5F5F4?text=');">
-            <div class="bg-[#36454F]/80 py-20 md:py-32">
-                 <div class="container mx-auto px-6 text-center text-white">
-                      <h2 class="text-4xl font-bold mb-4">Let's Build a Better Society Together</h2>
-                      <p class="text-lg mb-8 max-w-2xl mx-auto">Whether you're an individual with a story, an expert with knowledge, or an organization with a cause, there's a place for you here.</p>
-                      <button id="open-modal-btn" class="bg-[#879A74] text-white px-10 py-4 rounded-lg font-semibold hover:bg-[#6f815a] transition-transform transform hover:scale-105">
+// Component for the Call to Action Section
+const CallToAction = ({ onOpenModal }) => {
+    return (
+        <section 
+            id="contact" 
+            className="bg-cover bg-center" 
+            //This assumes 'footer-hands.svg' is in the 'public' folder of your React project.
+            style={{ backgroundImage: "url('/footer-hands.svg')" }}
+        >
+            <div className="bg-[#36454F]/80 py-20 md:py-32">
+                 <div className="container mx-auto px-6 text-center text-white">
+                      <h2 className="text-4xl font-bold mb-4">Let's Build a Better Society Together</h2>
+                      <p className="text-lg mb-8 max-w-2xl mx-auto">Whether you're an individual with a story, an expert with knowledge, or an organization with a cause, there's a place for you here.</p>
+                      <button 
+                          onClick={onOpenModal}
+                          className="bg-[#879A74] text-white px-10 py-4 rounded-lg font-semibold hover:bg-[#6f815a] transition-transform transform hover:scale-105"
+                      >
                           Reach Out to Us
                       </button>
                  </div>
             </div>
         </section>
-    </main>
+    );
+};
+
+// Component for the Footer Section
+const Footer = () => {
+    return (
+        <footer className="relative">
+            {/* This is the footer-hands.svg element that overlaps */}
+            <div className="w-full flex justify-center relative z-10" style={{ marginBottom: "-3rem" }}>
+                <svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-lg">
+                    <path d="M40 50C50 30 70 30 80 50" stroke="#879A74" strokeWidth="5" strokeLinecap="round"/>
+                    <path d="M120 50C130 30 150 30 160 50" stroke="#879A74" strokeWidth="5" strokeLinecap="round"/>
+                </svg>
+            </div>
+
+            {/* Main Footer Content */}
+            <div className="bg-[#36454F] text-[#F5F5F4]/70 pt-20 pb-8">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                        <div className="mb-6 md:mb-0">
+                            <h3 className="text-2xl font-bold text-white mb-2">SAMVAAD</h3>
+                            <p className="text-sm">&copy; 2025 SAMVAAD. All Rights Reserved.</p>
+                        </div>
+                        <div className="flex space-x-6 text-sm">
+                            <a href="#about" className="hover:text-white transition-colors">Mission</a>
+                            <a href="#shop" className="hover:text-white transition-colors">Approach</a>
+                            <a href="#contact" className="hover:text-white transition-colors">Impact</a>
+                            <a href="#contact" className="hover:text-white transition-colors">Get Involved</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
+};
+
+
+// Main App Component
+export default function App() {
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isContactModalOpen, setContactModalOpen] = useState(false);
+    const [isCartModalOpen, setCartModalOpen] = useState(false);
+    const [cart, setCart] = useState([]);
+
+    const products = [
+        { id: 1, name: "SAMVAAD T-Shirt", price: 499, image: "https://placehold.co/300x300/879A74/FFFFF0?text=T-Shirt", description: "Soft, premium cotton. Show your support in style." },
+        { id: 2, name: "SAMVAAD Mug", price: 299, image: "https://placehold.co/300x300/36454F/F5F5F4?text=Mug", description: "Ceramic mug for your daily inspiration." },
+        { id: 3, name: "SAMVAAD Notebook", price: 199, image: "https://placehold.co/300x300/879A74/36454F?text=Notebook", description: "Jot down your thoughts and ideas." },
+        { id: 4, name: "Sticker Pack", price: 99, image: "https://placehold.co/300x300/36454F/879A74?text=Sticker+Pack", description: "Decorate your world with SAMVAAD stickers." }
+    ];
+
+    const handleAddToCart = (product) => {
+        setCart(prevCart => {
+            const existingItem = prevCart.find(item => item.id === product.id);
+            if (existingItem) {
+                return prevCart.map(item =>
+                    item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+                );
+            }
+            return [...prevCart, { ...product, qty: 1 }];
+        });
+    };
     
-    <!-- Cart Floating Button -->
-    <button id="cart-fab" class="fixed bottom-24 right-8 bg-[#36454F] text-white rounded-full p-4 shadow-lg hover:bg-[#879A74] transition-transform transform hover:scale-110 focus:outline-none z-30" aria-label="View cart">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007.5 17h9a1 1 0 00.85-1.53L17 13M7 13V6h13"></path></svg>
-        <span id="cart-count" class="absolute -top-1 -right-1 bg-[#879A74] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-    </button>
+    const handleRemoveFromCart = (productId) => {
+        setCart(prevCart => prevCart.filter(item => item.id !== productId));
+    };
 
-    <!-- Cart Modal -->
-    <div id="cart-modal" class="cart-modal fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none">
-        <div class="cart-modal-content bg-[#F5F5F4] w-full max-w-md rounded-lg shadow-xl p-8 transform scale-95">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-[#36454F]">Your Cart</h3>
-                <button id="cart-modal-close" class="text-gray-500 hover:text-black text-3xl leading-none">&times;</button>
-            </div>
-            <div id="cart-items" class="mb-6 max-h-64 overflow-y-auto">
-                <!-- Cart items will be injected here -->
-            </div>
-            <div class="border-t pt-4">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="font-semibold text-lg">Total:</span>
-                    <span id="cart-total" class="font-bold text-xl">₹0</span>
+    const cartTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const cartItemCount = cart.reduce((sum, item) => sum + item.qty, 0);
+
+    return (
+        <div className="bg-[#F5F5F4] font-sans text-[#36454F]">
+            {/* Header */}
+            <header className="bg-[#F5F5F4]/80 backdrop-blur-lg sticky top-0 z-40">
+                <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                    <h1 className="text-2xl font-bold font-serif">SAMVAAD</h1>
+                    <nav className="hidden md:flex space-x-8">
+                        <a href="#shop" className="hover:text-[#879A74] transition-colors">Shop</a>
+                        <a href="#about" className="hover:text-[#879A74] transition-colors">About</a>
+                        <a href="#contact" className="hover:text-[#879A74] transition-colors">Contact</a>
+                    </nav>
+                    <button onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
                 </div>
-                <button class="w-full bg-[#879A74] text-white py-3 rounded-md font-semibold hover:bg-[#6f815a] transition-colors" disabled>Checkout (Coming Soon)</button>
-            </div>
-        </div>
-    </div>
+                {isMobileMenuOpen && (
+                    <div className="md:hidden">
+                        <a href="#shop" className="block py-2 px-6 hover:bg-[#FFFFF0]">Shop</a>
+                        <a href="#about" className="block py-2 px-6 hover:bg-[#FFFFF0]">About</a>
+                        <a href="#contact" className="block py-2 px-6 hover:bg-[#FFFFF0]">Contact</a>
+                    </div>
+                )}
+            </header>
 
-    <!-- Contact Modal -->
-    <div id="contact-modal" class="modal fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none">
-        <div class="modal-content bg-[#F5F5F4] w-full max-w-lg rounded-lg shadow-xl p-8 transform scale-95">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-[#36454F]">Connect With Us</h3>
-                <button id="modal-close-btn" class="text-gray-500 hover:text-black text-3xl leading-none">&times;</button>
-            </div>
-            <form id="contact-form">
-                <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-[#36454F]/80 mb-1">Name</label>
-                    <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#879A74]" required>
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-[#36454F]/80 mb-1">Email</label>
-                    <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#879A74]" required>
-                </div>
-                <div class="mb-6">
-                    <label for="reason" class="block text-sm font-medium text-[#36454F]/80 mb-1">Reason for Connecting</label>
-                    <select id="reason" name="reason" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#879A74] bg-white">
-                        <option>Partnership</option>
-                        <option>Merchandise Inquiry</option>
-                        <option>General Inquiry</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full bg-[#879A74] text-white py-3 rounded-md font-semibold hover:bg-[#6f815a] transition-colors">Send Message</button>
-            </form>
-        </div>
-    </div>
+            <main>
+                {/* Hero Section */}
+                <section className="py-20 md:py-32 text-center bg-[#FFFFF0]">
+                    <div className="container mx-auto px-6">
+                        <div className="max-w-3xl mx-auto">
+                            <img src="https://placehold.co/400x200/879A74/FFFFF0?text=SAMVAAD+Merch" alt="SAMVAAD Merchandise" className="w-full max-w-md mx-auto mb-8 rounded-lg shadow-lg" />
+                            <h1 className="text-5xl md:text-7xl font-extrabold font-serif text-[#36454F] mb-4">SAMVAAD Store</h1>
+                            <p className="text-lg md:text-xl text-[#36454F]/80 mb-8">Wear your values. Support the movement. Shop exclusive SAMVAAD merchandise.</p>
+                            <a href="#shop" className="bg-[#879A74] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#6f815a] transition-transform transform hover:scale-105 inline-block">Shop Now</a>
+                        </div>
+                    </div>
+                </section>
+                
+                {/* Merchandise Grid */}
+                <section id="shop" className="py-16 md:py-24">
+                    <div className="container mx-auto px-6">
+                        <div className="text-center mb-12">
+                            <h2 className="text-4xl font-bold font-serif mb-2">Featured Merchandise</h2>
+                            <p className="text-lg text-[#36454F]/70 max-w-3xl mx-auto">Every purchase supports our mission of dialogue, healing, and awareness.</p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                            {products.map(product => (
+                                <div key={product.id} className="bg-white p-6 rounded-lg shadow-md flex flex-col transition-all duration-200 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]">
+                                    <img src={product.image} alt={product.name} className="mb-4 rounded" />
+                                    <h3 className="text-xl font-bold font-serif text-[#879A74] mb-2">{product.name}</h3>
+                                    <p className="text-[#36454F]/80 mb-2 flex-1">{product.description}</p>
+                                    <div className="font-semibold text-lg mb-4">₹{product.price}</div>
+                                    <button onClick={() => handleAddToCart(product)} className="mt-auto bg-[#879A74] text-white py-2 rounded font-semibold hover:bg-[#6f815a]">Add to Cart</button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
-    <!-- This is the footer-hands.svg element -->
-    <div class="w-full flex justify-center relative z-10" style="margin-bottom: -3rem;">
-        <svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-lg">
-            <!-- Left hand -->
-            <path d="M40 50C50 30 70 30 80 50" stroke="#879A74" stroke-width="5" stroke-linecap="round"/>
-            <ellipse cx="40" cy="50" rx="7" ry="5" fill="#879A74" opacity="0.7"/>
-            <ellipse cx="80" cy="50" rx="7" ry="5" fill="#879A74" opacity="0.7"/>
-            <!-- Right hand -->
-            <path d="M120 50C130 30 150 30 160 50" stroke="#879A74" stroke-width="5" stroke-linecap="round"/>
-            <ellipse cx="120" cy="50" rx="7" ry="5" fill="#879A74" opacity="0.7"/>
-            <ellipse cx="160" cy="50" rx="7" ry="5" fill="#879A74" opacity="0.7"/>
-            <!-- Palms (center overlap) -->
-            <ellipse cx="100" cy="45" rx="12" ry="8" fill="#879A74" opacity="0.5"/>
-        </svg>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-[#36454F] text-[#F5F5F4]/70 pt-20 pb-8 relative">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-bold text-white mb-2">SAMVAAD</h3>
-                    <p class="text-sm">&copy; 2025 SAMVAAD. All Rights Reserved.</p>
-                </div>
-                <div class="flex space-x-6 text-sm">
-                    <a href="#" class="hover:text-white transition-colors">Mission</a>
-                    <a href="#" class="hover:text-white transition-colors">Approach</a>
-                    <a href="#" class="hover:text-white transition-colors">Impact</a>
-                    <a href="#" class="hover:text-white transition-colors">Get Involved</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu Toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Contact Modal logic
-            const contactModal = document.getElementById('contact-modal');
-            const contactModalContent = contactModal.querySelector('.modal-content');
-            const openModalBtn = document.getElementById('open-modal-btn');
-            const closeModalBtn = document.getElementById('modal-close-btn');
-
-            const openContactModal = () => {
-                contactModal.classList.remove('opacity-0', 'pointer-events-none');
-                contactModalContent.classList.remove('scale-95');
-            };
-            const closeContactModal = () => {
-                contactModal.classList.add('opacity-0', 'pointer-events-none');
-                contactModalContent.classList.add('scale-95');
-            };
-
-            openModalBtn.addEventListener('click', openContactModal);
-            closeModalBtn.addEventListener('click', closeContactModal);
-            contactModal.addEventListener('click', (e) => {
-                if (e.target === contactModal) {
-                    closeContactModal();
-                }
-            });
-
-            // Cart logic
-            let cart = [];
-            const cartFab = document.getElementById('cart-fab');
-            const cartModal = document.getElementById('cart-modal');
-            const cartModalContent = cartModal.querySelector('.cart-modal-content');
-            const cartModalClose = document.getElementById('cart-modal-close');
-            const cartCount = document.getElementById('cart-count');
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-
-            function updateCartDisplay() {
-                const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-                cartCount.textContent = totalItems;
-
-                if (cart.length === 0) {
-                    cartItems.innerHTML = '<p class="text-center text-[#36454F]/70">Your cart is empty.</p>';
-                    cartTotal.textContent = '₹0';
-                } else {
-                    cartItems.innerHTML = cart.map(item => `
-                        <div class="flex justify-between items-center mb-3">
-                            <div>
-                                <span class="font-semibold">${item.name}</span>
-                                <span class="text-sm text-[#36454F]/60 ml-2">x${item.qty}</span>
+                {/* About Section */}
+                <section id="about" className="py-16 md:py-24 bg-[#FFFFF0]">
+                    <div className="container mx-auto px-6">
+                        <div className="text-center mb-12">
+                            <h2 className="text-4xl font-bold font-serif mb-2">Why Shop With Us?</h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                            <div className="p-8 rounded-lg">
+                                <h3 className="text-2xl font-bold font-serif text-[#879A74] mb-3">Quality & Purpose</h3>
+                                <p>Every item is designed with care and meaning, reflecting our core values.</p>
                             </div>
-                            <div class="flex items-center">
-                                <span class="mr-4 font-semibold">₹${item.price * item.qty}</span>
-                                <button class="remove-item text-red-500 hover:text-red-700 font-bold text-lg" data-id="${item.id}" aria-label="Remove">&times;</button>
+                            <div className="p-8 rounded-lg">
+                                <h3 className="text-2xl font-bold font-serif text-[#879A74] mb-3">Support the Cause</h3>
+                                <p>Your purchase directly funds workshops, events, and outreach programs.</p>
+                            </div>
+                            <div className="p-8 rounded-lg">
+                                <h3 className="text-2xl font-bold font-serif text-[#879A74] mb-3">Limited Edition</h3>
+                                <p>Our merchandise is exclusive and limited—be part of the movement!</p>
                             </div>
                         </div>
-                    `).join('');
-                    cartTotal.textContent = '₹' + cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-                }
-            }
+                    </div>
+                </section>
 
-            document.querySelectorAll('.add-to-cart').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const id = this.dataset.id;
-                    const name = this.dataset.name;
-                    const price = parseInt(this.dataset.price, 10);
-                    const existing = cart.find(item => item.id === id);
-                    if (existing) {
-                        existing.qty += 1;
-                    } else {
-                        cart.push({ id, name, price, qty: 1 });
-                    }
-                    updateCartDisplay();
-                });
-            });
+                {/* Call To Action Component */}
+                <CallToAction onOpenModal={() => setContactModalOpen(true)} />
+            </main>
 
-            const openCartModal = () => {
-                cartModal.classList.remove('opacity-0', 'pointer-events-none');
-                cartModalContent.classList.remove('scale-95');
-                updateCartDisplay();
-            };
-            const closeCartModal = () => {
-                cartModal.classList.add('opacity-0', 'pointer-events-none');
-                cartModalContent.classList.add('scale-95');
-            };
+            {/* Footer Component */}
+            <Footer />
 
-            cartFab.addEventListener('click', openCartModal);
-            cartModalClose.addEventListener('click', closeCartModal);
-            cartModal.addEventListener('click', (e) => {
-                if (e.target === cartModal) {
-                    closeCartModal();
-                }
-            });
-            cartItems.addEventListener('click', function (e) {
-                if (e.target.classList.contains('remove-item')) {
-                    const id = e.target.dataset.id;
-                    cart = cart.filter(item => item.id !== id);
-                    updateCartDisplay();
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            {/* Cart Floating Button */}
+            <button onClick={() => setCartModalOpen(true)} className="fixed bottom-24 right-8 bg-[#36454F] text-white rounded-full p-4 shadow-lg hover:bg-[#879A74] transition-transform transform hover:scale-110 focus:outline-none z-30" aria-label="View cart">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007.5 17h9a1 1 0 00.85-1.53L17 13M7 13V6h13"></path></svg>
+                {cartItemCount > 0 && <span className="absolute -top-1 -right-1 bg-[#879A74] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">{cartItemCount}</span>}
+            </button>
+            
+            {/* Cart Modal */}
+            {isCartModalOpen && (
+                <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 transition-opacity duration-200">
+                    <div className="bg-[#F5F5F4] w-full max-w-md rounded-lg shadow-xl p-8 transform transition-transform duration-200 scale-100">
+                        <div className="flex justify-between items-center mb-6">
+                            <h3 className="text-2xl font-bold font-serif text-[#36454F]">Your Cart</h3>
+                            <button onClick={() => setCartModalOpen(false)} className="text-gray-500 hover:text-black text-3xl leading-none">&times;</button>
+                        </div>
+                        <div className="mb-6 max-h-64 overflow-y-auto">
+                            {cart.length === 0 ? (
+                                <p className="text-center text-[#36454F]/70">Your cart is empty.</p>
+                            ) : (
+                                cart.map(item => (
+                                    <div key={item.id} className="flex justify-between items-center mb-3">
+                                        <div>
+                                            <span className="font-semibold">{item.name}</span>
+                                            <span className="text-sm text-[#36454F]/60 ml-2">x{item.qty}</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <span className="mr-4 font-semibold">₹{item.price * item.qty}</span>
+                                            <button onClick={() => handleRemoveFromCart(item.id)} className="text-red-500 hover:text-red-700 font-bold text-lg" aria-label="Remove">&times;</button>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                        <div className="border-t pt-4">
+                            <div className="flex justify-between items-center mb-4">
+                                <span className="font-semibold text-lg">Total:</span>
+                                <span className="font-bold text-xl">₹{cartTotal}</span>
+                            </div>
+                            <button className="w-full bg-[#879A74] text-white py-3 rounded-md font-semibold hover:bg-[#6f815a] transition-colors" disabled>Checkout (Coming Soon)</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Contact Modal */}
+            {isContactModalOpen && (
+                 <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 transition-opacity duration-200">
+                    <div className="bg-[#F5F5F4] w-full max-w-lg rounded-lg shadow-xl p-8 transform transition-transform duration-200 scale-100">
+                        <div className="flex justify-between items-center mb-6">
+                            <h3 className="text-2xl font-bold font-serif text-[#36454F]">Connect With Us</h3>
+                            <button onClick={() => setContactModalOpen(false)} className="text-gray-500 hover:text-black text-3xl leading-none">&times;</button>
+                        </div>
+                        <form>
+                            <div className="mb-4">
+                                <label htmlFor="name" className="block text-sm font-medium text-[#36454F]/80 mb-1">Name</label>
+                                <input type="text" id="name" name="name" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#879A74]" required />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="email" className="block text-sm font-medium text-[#36454F]/80 mb-1">Email</label>
+                                <input type="email" id="email" name="email" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#879A74]" required />
+                            </div>
+                            <div className="mb-6">
+                                <label htmlFor="reason" className="block text-sm font-medium text-[#36454F]/80 mb-1">Reason for Connecting</label>
+                                <select id="reason" name="reason" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#879A74] bg-white">
+                                    <option>Partnership</option>
+                                    <option>Merchandise Inquiry</option>
+                                    <option>General Inquiry</option>
+                                </select>
+                            </div>
+                            <button type="submit" className="w-full bg-[#879A74] text-white py-3 rounded-md font-semibold hover:bg-[#6f815a] transition-colors">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}

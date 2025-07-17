@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Header from "@/components/header"
-import HeroSection from "@/components/sections/hero-section"
+import HeroSection from "@/componentgit s/sections/hero-section"
 import MarqueeSlider from "@/components/sections/marquee-slider"
 import ChallengeSection from "@/components/sections/challenge-section"
 import MissionCorePillars from "@/components/sections/mission-core-pillars"
