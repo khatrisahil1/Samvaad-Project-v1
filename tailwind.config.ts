@@ -53,19 +53,11 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // SAMVAAD Refined Palette
-        samvaad: {
-          primary: "#D96F4B", // Clay Terracotta
-          secondary: "#5E5C91", // Dusty Indigo
-          accent: "#A2C0DD", // Soothing Sky
-          "bg-light": "#F9F5F0", // Warm Mist
-          "bg-dark": "#1F1D2B", // Charcoal Plum
-          "text-light": "#2E2E2E", // Deep Charcoal
-          "text-dark": "#F3ECE7", // Pale Sand
-          success: "#A4C5A1", // Sage Green
-          warning: "#F5C37D", // Soft Amber
-          error: "#D86767", // Dust Rose
-        },
+        // SAMVAAD Custom Colors
+        "samvaad-light-stone-gray": "#F5F5F4", // off-white/light gray
+        "samvaad-dark-slate": "#36454F", // dark gray/slate
+        "samvaad-serene-sage": "#8FBC8F", // a muted green
+        "samvaad-off-white": "#F8F8F8", // slightly lighter off-white
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -74,34 +66,21 @@ const config = {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "0",
-          },
-        },
-        "fade-in": {
-          from: { opacity: "0", transform: "translateY(10px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out forwards",
       },
       fontFamily: {
-        heading: ["var(--font-playfair-display)", "serif"],
-        body: ["var(--font-open-sans)", "sans-serif"], // Using Open Sans as Manrope is not directly available
+        heading: ["var(--font-heading)"],
+        body: ["var(--font-body)"],
       },
     },
   },

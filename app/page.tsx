@@ -2,12 +2,11 @@
 
 import { useState } from "react"
 import Header from "@/components/header"
-
-import ChallengeSection from "@/components/sections/challenge-section"
-import MissionCorePillars from "@/components/sections/mission-core-pillars"
-import StrategicApproach from "@/components/sections/strategic-approach"
-import ImpactTestimonials from "@/components/sections/impact-testimonials"
-import PreFooterContact from "@/components/sections/pre-footer-contact"
+import HomeSection from "@/components/sections/home-section"
+import AboutSection from "@/components/sections/about-section"
+import ServicesSection from "@/components/sections/services-section"
+import BlogsSection from "@/components/sections/blogs-section"
+import ContactUsSection from "@/components/sections/contact-us-section"
 import Footer from "@/components/footer"
 import FAB from "@/components/fab"
 import ContactModal from "@/components/contact-modal"
@@ -27,12 +26,11 @@ export default function InteractiveReportPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-
-        <ChallengeSection />
-        <MissionCorePillars />
-        <StrategicApproach />
-        <ImpactTestimonials />
-        <PreFooterContact />
+        <HomeSection />
+        <AboutSection />
+        <ServicesSection />
+        <BlogsSection />
+        <ContactUsSection onOpenModal={handleOpenContactModal} />
       </main>
       <Footer />
       <FAB onOpenContactModal={handleOpenContactModal} />

@@ -1,43 +1,33 @@
 import type React from "react"
-import type { Metadata } from "next"
-import { Open_Sans, Playfair_Display } from "next/font/google"
 import "./globals.css"
+import { Mona_Sans as FontSans } from "next/font/google"
+import { Content as FontHeading } from "next/font/google"
 import { cn } from "@/lib/utils"
+import { ThemeProvider } from "@/components/theme-provider"
 
-// Configure Open Sans font for body text
-const openSans = Open_Sans({
+const fontSans = FontSans({
   subsets: ["latin"],
-  variable: "--font-open-sans",
-  weight: ["400", "600", "700"],
-  display: "swap",
+  variable: "--font-sans",
 })
 
-// Configure Playfair Display font for headings
-const playfairDisplay = Playfair_Display({
+const fontHeading = FontHeading({
   subsets: ["latin"],
-  variable: "--font-playfair-display",
-  weight: ["700", "800"],
-  display: "swap",
+  variable: "--font-heading",
 })
 
-export const metadata: Metadata = {
-  title: "SAMVAAD | Interactive Report",
-  description:
-    "A single-page interactive report for SAMVAAD, focusing on youth mental wellness and community engagement.",
-  generator: "v0.dev",
+export const metadata = {
+  title: "SAMVAAD - From Ideas to Impact",
+  description: "Building a better society through better understanding.",
+    generator: 'v0.dev'
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body
-        className={cn("min-h-screen bg-background font-body antialiased", openSans.variable, playfairDisplay.variable)}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable, fontHeading.variable)}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

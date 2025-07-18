@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { MessageSquare } from "lucide-react"
+import { MessageSquareTextIcon } from "lucide-react"
 
 interface FABProps {
   onOpenContactModal: () => void
@@ -9,13 +9,15 @@ interface FABProps {
 
 export default function FAB({ onOpenContactModal }: FABProps) {
   return (
-    <Button
-      id="fab-open-modal"
-      className="fixed bottom-8 right-8 bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:bg-primary/90 transition-transform transform hover:scale-110 focus:outline-none z-30"
-      aria-label="Connect with Us"
-      onClick={onOpenContactModal}
-    >
-      <MessageSquare className="w-6 h-6" />
-    </Button>
+    <div className="fixed bottom-6 right-6 z-50">
+      <Button
+        size="lg"
+        className="rounded-full w-16 h-16 shadow-lg bg-samvaad-serene-sage hover:bg-samvaad-serene-sage/90 text-white"
+        onClick={onOpenContactModal}
+        aria-label="Open contact form"
+      >
+        <MessageSquareTextIcon className="w-8 h-8" />
+      </Button>
+    </div>
   )
 }

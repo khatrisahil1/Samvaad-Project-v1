@@ -14,16 +14,20 @@ export default function Header() {
   }
 
   const navLinks = [
-    { name: "Mission", href: "#mission" },
-    { name: "Approach", href: "#approach" },
-    { name: "Impact", href: "#impact" },
-    { name: "Get Involved", href: "#contact" },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Blogs", href: "#blogs" },
+    { name: "Contact Us", href: "#contact" },
   ]
 
   return (
-    <header id="header" className="bg-background/80 backdrop-blur-lg sticky top-0 z-40 border-b border-border">
+    <header
+      id="header"
+      className="bg-samvaad-light-stone-gray/80 backdrop-blur-lg sticky top-0 z-40 border-b border-border"
+    >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="#home" className="text-2xl font-heading font-bold text-foreground" prefetch={false}>
+        <Link href="#home" className="text-2xl font-heading font-bold text-samvaad-dark-slate" prefetch={false}>
           SAMVAAD
         </Link>
         <nav className="hidden md:flex space-x-8">
@@ -31,7 +35,7 @@ export default function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className="hover:text-primary transition-colors font-body"
+              className="hover:text-samvaad-serene-sage transition-colors font-body"
               prefetch={false}
             >
               {link.name}
@@ -45,14 +49,18 @@ export default function Header() {
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
         >
-          {isMobileMenuOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+          {isMobileMenuOpen ? (
+            <XIcon className="w-6 h-6 text-samvaad-dark-slate" />
+          ) : (
+            <MenuIcon className="w-6 h-6 text-samvaad-dark-slate" />
+          )}
         </Button>
       </div>
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
         className={cn(
-          "md:hidden bg-background/90 backdrop-blur-sm transition-all duration-300 ease-in-out",
+          "md:hidden bg-samvaad-light-stone-gray/90 backdrop-blur-sm transition-all duration-300 ease-in-out",
           isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden",
         )}
       >
@@ -61,7 +69,7 @@ export default function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className="block py-3 px-6 hover:bg-muted transition-colors font-body"
+              className="block py-3 px-6 text-samvaad-dark-slate hover:bg-samvaad-off-white transition-colors font-body"
               onClick={() => setIsMobileMenuOpen(false)}
               prefetch={false}
             >
