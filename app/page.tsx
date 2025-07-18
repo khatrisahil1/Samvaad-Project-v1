@@ -2,8 +2,7 @@
 
 import { useState } from "react"
 import Header from "@/components/header"
-import HeroSection from "@/componentgit s/sections/hero-section"
-import MarqueeSlider from "@/components/sections/marquee-slider"
+
 import ChallengeSection from "@/components/sections/challenge-section"
 import MissionCorePillars from "@/components/sections/mission-core-pillars"
 import StrategicApproach from "@/components/sections/strategic-approach"
@@ -28,8 +27,7 @@ export default function InteractiveReportPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        <HeroSection />
-        <MarqueeSlider />
+
         <ChallengeSection />
         <MissionCorePillars />
         <StrategicApproach />
