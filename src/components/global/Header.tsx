@@ -26,9 +26,9 @@ export const Header: React.FC = () => {
           <Link href="/contact" className={getLinkClass('/contact')}>Contact</Link>
         </nav>
         <div className="flex items-center space-x-4">
-           <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-stone-200 dark:hover:bg-slate-800 transition-colors">
+           {/* <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-stone-200 dark:hover:bg-slate-800 transition-colors">
             {theme === 'light' ? '🌙' : '☀️'}
-          </button>
+          </button> */}
           <Link
             href="/contact"
             className="hidden md:block px-6 py-2 rounded-full font-semibold text-white dark:text-slate shadow-md transition-all duration-200 hover:brightness-110 active:scale-95"
