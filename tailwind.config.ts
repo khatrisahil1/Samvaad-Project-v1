@@ -1,90 +1,45 @@
-import type { Config } from "tailwindcss"
+// --- MODIFIED FILE: tailwind.config.ts ---
+import type { Config } from "tailwindcss";
 
-const config = {
-  darkMode: ["class"],
+const config: Config = {
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-    "*.{js,ts,jsx,tsx,mdx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  prefix: "",
+  darkMode: 'class', // This enables our manual dark mode switching
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
+      // Here we define the "Serene Sage & Stone" color palette
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+        stone: {
+          DEFAULT: '#F5F5F4',   // Light Stone Gray (Light BG)
+          100: '#FFFFF0',     // Warm Ivory (Light Card BG)
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+        slate: {
+          DEFAULT: '#36454F',   // Dark Slate (Light Text / Dark BG)
+          800: '#475867',     // Muted Dark Slate (Dark Card BG)
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        // SAMVAAD Custom Colors
-        "samvaad-light-stone-gray": "#F5F5F4", // off-white/light gray
-        "samvaad-dark-slate": "#36454F", // dark gray/slate
-        "samvaad-serene-sage": "#8FBC8F", // a muted green
-        "samvaad-off-white": "#F8F8F8", // slightly lighter off-white
+        sage: {
+          DEFAULT: '#879A74',   // Muted Sage Green (Light Accent)
+          light: '#A7B894',    // Brighter Sage Green (Dark Accent)
+        }
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      // Here we define the font families
+      fontFamily: {
+        sans: ['Open Sans', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-      fontFamily: {
-        heading: ["var(--font-heading)"],
-        body: ["var(--font-body)"],
-      },
+        marquee: 'marquee 40s linear infinite',
+      }
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
-
-export default config
+  plugins: [],
+};
+export default config;
