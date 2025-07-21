@@ -60,3 +60,4 @@ export const FeaturedSection: React.FC = () => {
             </div>
         </section>
     );
+};
