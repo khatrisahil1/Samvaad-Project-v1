@@ -22,7 +22,12 @@ const config: Config = {
         sage: {
           DEFAULT: '#879A74',   // Muted Sage Green (Light Accent)
           light: '#A7B894',    // Brighter Sage Green (Dark Accent)
-        }
+        },
+        orangeDark: 'hsl(var(--color-orange-dark))',
+        teal: 'hsl(var(--color-teal))',
+        indigo: 'hsl(var(--color-indigo))',
+        offwhite: 'hsl(var(--color-offwhite))',
+        orangeVivid: 'hsl(var(--color-orange-vivid))',
       },
       // Here we define the font families
       fontFamily: {

@@ -1,8 +1,8 @@
 import React from 'react';
 
 const founders = [
-    { name: "Saumya D. Tewari", title: "Founder & Curator", bio: "With over 15 years of experience...", image: "https://placehold.co/400x400/FFFFF0/36454F?text=Saumya+T." },
-    { name: "Dheeraj Tewari", title: "Co-Founder & Strategist", bio: "Dheeraj brings 16+ years of global leadership experience...", image: "https://placehold.co/400x400/FFFFF0/36454F?text=Dheeraj+T." }
+    { name: "Saumya D. Tewari", title: "Founder & Curator", bio: "With over 15 years of experience...", image: "/saumya-mam.jpeg" },
+    { name: "Dheeraj Tewari", title: "Co-Founder & Strategist", bio: "Dheeraj brings 16+ years of global leadership experience...", image: "/Dheeraj-sir.jpg" }
 ];
 
 export const AboutSection: React.FC = () => {
@@ -84,7 +84,7 @@ export const AboutSection: React.FC = () => {
       <section className="py-20 bg-white dark:bg-slate-900" data-aos="fade-up" data-aos-delay="400">
         <div className="container mx-auto px-6 text-center max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-12" style={{ fontFamily: "'Playfair Display', serif" }}>Our Community & Media Spotlight</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
+          <div className="flex flex-wrap justify-center items-center gap-6">
             {[
               'emerson.svg',
               'bluewater.svg',
@@ -97,7 +97,7 @@ export const AboutSection: React.FC = () => {
                 key={logo}
                 src={`/logos/${logo}`}
                 alt={logo.replace('.svg', '')}
-                className="mx-auto grayscale hover:grayscale-0 transition-all duration-300"
+                className="mx-auto grayscale hover:grayscale-0 transition-all duration-300 max-w-[100px] md:max-w-[80px]"
               />
             ))}
           </div>
