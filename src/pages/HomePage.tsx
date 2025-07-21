@@ -7,6 +7,7 @@ import { CorePillars } from '../components/home/CorePillars';
 import { ImpactSection } from '../components/home/ImpactSection';
 import { PreFooterCTA } from '../components/home/PreFooterCTA';
 
+
 export const HomePage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   return (

@@ -3,7 +3,7 @@ import React from 'react';
 import { HeroSection } from '../home/HeroSection';
 import { MarqueeSlider } from '../home/MarqueeSlider';
 import { CorePillars } from '../home/CorePillars';
-import { FeaturedSection } from '@/components/home/FeaturedSection'; 
+import { FeaturedSection } from '../home/FeaturedSection'; 
 import { ImpactSection } from '../home/ImpactSection';
 
 export const HomeSection: React.FC = () => {
