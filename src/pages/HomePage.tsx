@@ -1,6 +1,5 @@
 // --- File: src/pages/HomePage.tsx ---
 import React from 'react';
-import Head from 'next/head';
 import { HeroSection } from '../components/home/HeroSection';
 import FeaturedSection from "../components/home/FeaturedSection";
 import { MarqueeSlider } from '../components/home/MarqueeSlider';
@@ -12,17 +11,6 @@ import { PreFooterCTA } from '../components/home/PreFooterCTA';
 const HomePage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   return (
-    <Head>
-      <title>Samvaad</title>
-      <meta name="description" content="Experience the journey of Samvaad – fostering emotional wellness through powerful storytelling and community impact." />
-      <meta property="og:title" content="Samvaad" />
-      <meta property="og:description" content="Experience the journey of Samvaad – fostering emotional wellness through powerful storytelling and community impact." />
-      <meta property="og:image" content="/Story-image.png" />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://samvaad-project-v1.vercel.app/" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:image" content="/Story-image.png" />
-    </Head>
     <div>
       <HeroSection />
       <FeaturedSection />
