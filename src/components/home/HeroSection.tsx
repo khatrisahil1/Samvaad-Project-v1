@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation'; // Correct hook for Next.js App Router
+import { useEffect } from 'react';
 
 export const HeroSection: React.FC = () => {
     const router = useRouter();
@@ -17,11 +18,45 @@ export const HeroSection: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "/libs/particles/particles.min.js";
+        script.onload = () => {
+          if (window.particlesJS) {
+            window.particlesJS('particles-js', {
+              particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#000000" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: { enable: true, color: "#cccccc" },
+                move: { enable: true, speed: 1 }
+              },
+              interactivity: {
+                detect_on: "window",
+                events: {
+                  onhover: { enable: true, mode: "repulse" },
+                  onclick: { enable: true, mode: "push" },
+                  resize: true
+                },
+                modes: {
+                  repulse: { distance: 150, duration: 0.4 },
+                  push: { particles_nb: 8 }
+                }
+              },
+              retina_detect: true
+            });
+          }
+        };
+        document.body.appendChild(script);
+    }, []);
+
     return (
         <section className="relative py-20 overflow-hidden">
-            <div className="absolute inset-0 z-0 bg-[#ffffff]" />
+            <div id="particles-js" className="absolute inset-0 z-0 pointer-events-none"></div>
+            <div className="absolute inset-0 z-[-1] bg-[#ffffff]" />
             {/* Animated radial glow background effect */}
-            <div className="absolute inset-0 z-0 pointer-events-none animate-[pulse-bg_10s_linear_infinite] bg-[radial-gradient(circle_at_30%_30%,rgba(226,74,20,0.04)_0%,transparent_60%),radial-gradient(circle_at_70%_70%,rgba(0,0,0,0.03)_0%,transparent_60%)]" />
             <div className="relative z-10 container mx-auto px-6 flex flex-col items-center justify-center text-center">
                 <div className="relative flex items-center justify-center mb-8">
                     <video 

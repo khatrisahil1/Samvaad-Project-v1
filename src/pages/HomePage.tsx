@@ -1,7 +1,7 @@
 // --- File: src/pages/HomePage.tsx ---
 import React from 'react';
 import { HeroSection } from '../components/home/HeroSection';
-import { FeaturedSection } from '../components/home/FeaturedSection';
+import FeaturedSection from "../components/home/FeaturedSection";
 import { MarqueeSlider } from '../components/home/MarqueeSlider';
 import { CorePillars } from '../components/home/CorePillars';
 import { ImpactSection } from '../components/home/ImpactSection';

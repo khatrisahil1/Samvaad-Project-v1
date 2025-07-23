@@ -3,9 +3,24 @@ import { Header } from '@/components/global/Header';
 import { Footer } from '@/components/global/Footer';
 
 const services = [
-    { title: "Motivational Talks", description: "Inspiring keynotes on resilience, leadership, and emotional intelligence. Our 'Campus Connect Talks' start at ₹20,000.", image: "https://placehold.co/600x400/879A74/FFFFFF?text=Talks", tags: ["Campus Connect", "Podcast"] },
-    { title: "Corporate Wellness Programs", description: "Custom programs and workshops designed to foster a mentally healthy and emotionally intelligent workforce.", image: "https://placehold.co/600x400/36454F/FFFFFF?text=Corporate", tags: ["Corporate Connect"] },
-    { title: "Campus Mental Health Connect", description: "We partner with colleges to provide students with proactive wellness resources, workshops, and a supportive community.", image: "https://placehold.co/600x400/A7B894/FFFFFF?text=Campus", tags: ["Campus Connect", "Events & Summits"] }
+  {
+    title: "Motivational Talks",
+    description: "Inspiring keynotes on resilience, leadership, and emotional intelligence. Our 'Campus Connect Talks' start at ₹20,000.",
+    image: "/services/motivational-talks.png",
+    tags: ["Campus Connect", "Podcast"]
+  },
+  {
+    title: "Corporate Wellness Programs",
+    description: "Custom programs and workshops designed to foster a mentally healthy and emotionally intelligent workforce.",
+    image: "/services/corporate-wellness.png",
+    tags: ["Corporate Connect"]
+  },
+  {
+    title: "Campus Mental Health Connect",
+    description: "We partner with colleges to provide students with proactive wellness resources, workshops, and a supportive community.",
+    image: "/services/campus-outreach.png",
+    tags: ["Campus Connect", "Events & Summits"]
+  }
 ];
 
 const ServicesPage = () => {

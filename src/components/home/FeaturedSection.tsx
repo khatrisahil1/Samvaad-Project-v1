@@ -151,4 +151,4 @@ const FeaturedSection: React.FC = () => {
     );
 };
 
-export default FeaturedSection;
+export default FeaturedSection; // ✅ THIS IS CRITICAL
