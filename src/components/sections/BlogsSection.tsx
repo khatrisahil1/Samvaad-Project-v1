@@ -62,6 +62,19 @@ export const BlogsSection: React.FC = () => {
             Explore articles, event recaps, and inspiring stories from the
             SAMVAAD community.
           </p>
+          <div className="flex justify-center flex-col items-center gap-2">
+            <label htmlFor="blog-search" className="text-md font-small text-gray-700 dark:text-gray-300">
+              Search Blogs
+            </label>
+            <input
+              id="blog-search"
+              type="text"
+              placeholder="Search blog posts..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full max-w-md px-4 py-2 border border-gray-300 rounded dark:bg-slate-800 dark:text-white dark:border-gray-600 bg-white text-lg outline-none focus:ring-2 focus:ring-sage mb-2"
+            />
+          </div>
           {/* Blog categories as global tags */}
           <div className="flex flex-wrap justify-center gap-2 mb-4">
             {tagOptions.map(tag => (
@@ -77,19 +90,6 @@ export const BlogsSection: React.FC = () => {
                 {tag}
               </button>
             ))}
-          </div>
-          <div className="flex justify-center flex-col items-center gap-2">
-            <label htmlFor="blog-search" className="text-md font-medium text-gray-700 dark:text-gray-300">
-              Search Posts
-            </label>
-            <input
-              id="blog-search"
-              type="text"
-              placeholder="Search blog posts..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full max-w-md px-4 py-2 border border-gray-300 rounded dark:bg-slate-800 dark:text-white dark:border-gray-600 bg-white font-bold text-lg outline-none focus:ring-2 focus:ring-sage"
-            />
           </div>
         </div>
 

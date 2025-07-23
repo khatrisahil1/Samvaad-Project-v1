@@ -28,11 +28,19 @@ const ServicesPage = () => {
 
             <main className="flex-1 py-20">
                 <div className="container mx-auto px-6">
-                    <section className="text-center max-w-4xl mx-auto mb-16">
+                    <section className="text-center max-w-4xl mx-auto mb-10">
                         <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">Our Services</h1>
-                        <p className="text-lg text-slate/80 dark:text-stone/80">We offer a range of services designed to support individuals, educational institutions, and corporations on their journey toward emotional wellbeing.</p>
+                        <p className="text-lg text-slate/80 dark:text-stone/80 mb-2">We offer a range of services designed to support individuals, educational institutions, and corporations on their journey toward emotional wellbeing.</p>
                     </section>
                     <div className="flex flex-col items-center gap-4 mb-8">
+                       <p>Search Services</p>
+                      <input
+                        type="text"
+                        placeholder="Search services..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full max-w-md px-4 py-2 border border-gray-300 rounded dark:bg-slate-800 dark:text-white"
+                      />
                       <div className="flex flex-wrap justify-center gap-2">
                         {tagOptions.map(tag => (
                           <button
@@ -48,13 +56,6 @@ const ServicesPage = () => {
                           </button>
                         ))}
                       </div>
-                      <input
-                        type="text"
-                        placeholder="Search services..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full max-w-md px-4 py-2 border border-gray-300 rounded dark:bg-slate-800 dark:text-white"
-                      />
                     </div>
                     <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredServices.length === 0 ? (

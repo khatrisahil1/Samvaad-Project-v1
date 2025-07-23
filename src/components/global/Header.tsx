@@ -22,7 +22,8 @@ export const Header: React.FC = () => {
           <Link href="/" className={getLinkClass('/')}>Home</Link>
           <Link href="/about" className={getLinkClass('/about')}>About</Link>
           <Link href="/services" className={getLinkClass('/services')}>Services</Link>
-          <Link href="/blog" className={getLinkClass('/blog')}>Blog</Link>
+          <Link href="/events" className={getLinkClass('/events')}>Events</Link>
+          <Link href="/blog" className={getLinkClass('/blog')}>Blogs</Link>
           <Link href="/contact" className={getLinkClass('/contact')}>Contact</Link>
         </nav>
         <div className="flex items-center space-x-4">

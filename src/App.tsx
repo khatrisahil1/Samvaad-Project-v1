@@ -11,7 +11,8 @@ import { ContactModal } from "@/components/modals/ContactModal"
 // Importing the new section components
 import { HomeSection } from "@/components/sections/HomeSection"
 import { AboutSection } from "@/components/sections/AboutSection"
-import { ServicesSection } from "@/components/sections/ServicesSection"
+import ServicesSection from "@/components/sections/ServicesSection"
+import EventsSection from "@/components/sections/EventsSection"
 import { BlogsSection } from "@/components/sections/BlogsSection"
 import { ContactUsSection } from "@/components/sections/ContactUsSection"
 
@@ -33,6 +34,7 @@ export default function InteractiveReportPage() {
         <HomeSection />
         <AboutSection />
         <ServicesSection />
+        <EventsSection />
         <BlogsSection />
         <ContactUsSection onOpenModal={handleOpenContactModal} />
       </main>

@@ -3,7 +3,7 @@ import { Header } from '@/components/global/Header';
 import { Footer } from '@/components/global/Footer';
 import { BlogsSection } from '@/components/sections/BlogsSection';
 
-const BlogPage = () => {
+const BlogsPage = () => {
   return (
     <div className="bg-stone dark:bg-slate text-slate dark:text-stone flex flex-col min-h-screen">
 
@@ -15,4 +15,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default BlogsPage;

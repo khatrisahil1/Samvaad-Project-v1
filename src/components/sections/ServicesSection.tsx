@@ -22,7 +22,7 @@ export default function ServicesPage() {
         "Personalized one-on-one sessions with certified therapists to address specific mental health concerns.",
       details:
         "This is a detailed explanation about Individual Counseling, what to expect, benefits, and how to book a session.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/logos/individual-counseling.png",
       tags: ["Campus Connect", "Corporate Connect"],
     },
     {
@@ -31,7 +31,7 @@ export default function ServicesPage() {
         "Supportive group environments for shared experiences and collective healing.",
       details:
         "Details about how group therapy works and how it helps people connect through shared experiences.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/logos/group-therapy.png",
       tags: ["Campus Connect"],
     },
     {
@@ -40,7 +40,7 @@ export default function ServicesPage() {
         "Educational sessions on stress management, resilience, mindfulness, and more.",
       details:
         "Upcoming webinars include 'Managing Exam Stress' and 'Mindfulness for Beginners'.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/logos/workshops-webinars.png",
       tags: ["Events"],
     },
     {
@@ -49,7 +49,7 @@ export default function ServicesPage() {
         "Tailored mental health initiatives for businesses to support employee well-being.",
       details:
         "Programs include team mental health checkups, seminars, and leadership coaching.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/logos/corporate-wellness.png",
       tags: ["Corporate Connect"],
     },
     {
@@ -58,7 +58,7 @@ export default function ServicesPage() {
         "Programs designed for students and faculty to promote mental health awareness in educational settings.",
       details:
         "Workshops and campus events, mental health clubs, peer support training.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/logos/campus-outreach.png",
       tags: ["Campus Connect"],
     },
     {
@@ -67,7 +67,7 @@ export default function ServicesPage() {
         "Engaging and inspiring talks on various aspects of mental wellness and personal growth. Pricing: Starting from $500.",
       details:
         "Renowned speakers share insights on personal growth, leadership, and resilience.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/logos/motivational-talks.png",
       tags: ["Podcast", "Events"],
     },
   ];
@@ -231,3 +231,5 @@ export default function ServicesPage() {
     </main>
   );
 }
+
+export { ServicesPage };

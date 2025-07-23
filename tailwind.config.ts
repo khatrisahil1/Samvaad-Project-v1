@@ -9,25 +9,20 @@ const config: Config = {
   darkMode: 'class', // This enables our manual dark mode switching
   theme: {
     extend: {
-      // Here we define the "Serene Sage & Stone" color palette
+      // New brand colors from Coolors palette
       colors: {
-        stone: {
-          DEFAULT: '#F5F5F4',   // Light Stone Gray (Light BG)
-          100: '#FFFFF0',     // Warm Ivory (Light Card BG)
-        },
-        slate: {
-          DEFAULT: '#36454F',   // Dark Slate (Light Text / Dark BG)
-          800: '#475867',     // Muted Dark Slate (Dark Card BG)
-        },
-        sage: {
-          DEFAULT: '#879A74',   // Muted Sage Green (Light Accent)
-          light: '#A7B894',    // Brighter Sage Green (Dark Accent)
-        },
-        orangeDark: 'hsl(var(--color-orange-dark))',
-        teal: 'hsl(var(--color-teal))',
-        indigo: 'hsl(var(--color-indigo))',
-        offwhite: 'hsl(var(--color-offwhite))',
-        orangeVivid: 'hsl(var(--color-orange-vivid))',
+        primary: '#7098FC',            // Soft Blue
+        secondary: '#74391E',          // Rich Brown
+        accent: '#E24A14',             // Vivid Orange
+        background: '#262727',         // Dark Base
+        muted: '#788AFC',              // Light Indigo
+
+        // For use in components or charts
+        brandBlue: '#7098FC',
+        brandBrown: '#74391E',
+        brandDark: '#262727',
+        brandOrange: '#E24A14',
+        brandIndigo: '#788AFC',
       },
       // Here we define the font families
       fontFamily: {

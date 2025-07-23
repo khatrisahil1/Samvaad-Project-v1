@@ -77,7 +77,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         onClick={onClose}
       >
         <div
-          className="bg-[#fefcf6] dark:bg-slate-800 w-full max-w-lg rounded-lg shadow-2xl p-8 border border-stone-300 dark:border-slate-700 relative"
+          className="bg-white dark:bg-white w-full max-w-lg rounded-lg shadow-2xl p-8 border border-stone-300 dark:border-slate-700 relative"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex justify-between items-start mb-2">
@@ -196,7 +196,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
             <button
               type="submit"
-              className="w-full bg-[#879973] dark:bg-[#a6b58a] text-white py-3 rounded-md font-semibold hover:brightness-110 transition duration-200"
+              className="w-full bg-[#e24a14] dark:bg-[#e24a14] text-white py-3 rounded-md font-semibold hover:brightness-110 transition duration-200"
             >
               Send Message
             </button>
@@ -205,7 +205,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       </div>
 
       {showConfirmation && (
-        <div className="fixed bottom-8 right-8 bg-[#199908] text-white px-6 py-2 rounded shadow-lg font-semibold z-[100] transition">
+        <div className="fixed bottom-6 right-6 bg-[#e24a14] text-white px-6 py-3 rounded shadow-lg font-semibold z-[100] transition duration-300 ease-in-out">
           Message sent!
         </div>
       )}

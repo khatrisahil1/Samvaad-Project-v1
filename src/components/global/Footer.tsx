@@ -22,6 +22,7 @@ export const Footer: React.FC = () => {
               <li><a href="/" className="hover:text-sage dark:hover:text-sage-light">Home</a></li>
               <li><Link href="/about" className="hover:text-sage dark:hover:text-sage-light">About Us</Link></li>
               <li><Link href="/services" className="hover:text-sage dark:hover:text-sage-light">Services</Link></li>
+              <li><Link href="/events" className="hover:text-sage dark:hover:text-sage-light">Events</Link></li>
               <li><Link href="/blog" className="hover:text-sage dark:hover:text-sage-light">Blogs</Link></li>
               <li><Link href="/contact" className="hover:text-sage dark:hover:text-sage-light">Contact</Link></li>
             </ul>
@@ -35,7 +36,7 @@ export const Footer: React.FC = () => {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Connect Us</h4>
-            <div className="flex justify-center md:justify-start space-x-4">
+            <div className="flex justify-center md:justify-center items-center flex-wrap gap-4">
               <a href="https://www.linkedin.com/company/samvaadfromideastoimpact" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-75">
                 {/* LinkedIn SVG */}
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -46,11 +47,11 @@ export const Footer: React.FC = () => {
               </a>
                 <a href="https://youtube.com/@samvaad-fromideastoimpact?si=GoaV__RHR20Mi6oV" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:opacity-75">
                 {/* YouTube SVG */}
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.112C19.413 3.5 12 3.5 12 3.5s-7.413 0-9.386.574a2.994 2.994 0 0 0-2.112 2.112C0 8.159 0 12 0 12s0 3.841.502 5.814a2.994 2.994 0 0 0 2.112 2.112C4.587 20.5 12 20.5 12 20.5s7.413 0 9.386-.574a2.994 2.994 0 0 0 2.112-2.112C24 15.841 24 12 24 12s0-3.841-.502-5.814zM9.545 15.568V8.432l6.545 3.568-6.545 3.568z"/></svg>
+                <svg className="w-8 h-9" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.112C19.413 3.5 12 3.5 12 3.5s-7.413 0-9.386.574a2.994 2.994 0 0 0-2.112 2.112C0 8.159 0 12 0 12s0 3.841.502 5.814a2.994 2.994 0 0 0 2.112 2.112C4.587 20.5 12 20.5 12 20.5s7.413 0 9.386-.574a2.994 2.994 0 0 0 2.112-2.112C24 15.841 24 12 24 12s0-3.841-.502-5.814zM9.545 15.568V8.432l6.545 3.568-6.545 3.568z"/></svg>
                 </a>
                 <a href="https://www.facebook.com/profile.php?id=61576717783045" target="_blank" rel="noopener noreferrer" aria-label="Meta" className="hover:opacity-75">
                 {/* Meta Logo Image */}
-                <img src="/logos/meta.svg" alt="Meta Logo" className="w-6 h-6 object-contain" />
+                <img className="w-8 h-8 object-contain" src="/logos/meta.svg" alt="Meta Logo" />
                 </a>
                 <a href="mailto:samvaadews@gmail.com" className="hover:text-sage dark:hover:text-sage-light underline flex items-center gap-2">
                 {/* Mail SVG Icon */}
