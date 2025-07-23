@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "latest",
     "@radix-ui/react-alert-dialog": "latest",
@@ -58,6 +59,7 @@
     "react-resizable-panels": "latest",
     "react-router-dom": "latest",
     "recharts": "latest",
+    "resend": "^4.7.0",
     "sonner": "latest",
     "swipe": "^1.7.7",
     "swiper": "^11.2.10",

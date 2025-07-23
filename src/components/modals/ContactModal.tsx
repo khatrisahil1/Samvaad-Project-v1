@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { database, ref, push, set } from "../../../lib/firebase";
+import { sendEmail } from "../../backend/utils/sendEmail"; 
 
 interface ModalProps {
   isOpen: boolean;
