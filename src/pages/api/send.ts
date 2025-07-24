@@ -38,23 +38,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
           <p>🔗 <strong>Stay connected with us:</strong></p>
           <p style="font-size: 15px; line-height: 2;">
-            <a href="../socialLogos/linkedin.png" target="_blank">
+            <a href="https://www.linkedin.com/company/samvaadfromideastoimpact" target="_blank">
               <img src="https://samvaadconnect.com/icons/linkedin.png" alt="LinkedIn" style="width: 20px; vertical-align: middle; margin-right: 8px;" />
               samvaadfromideastoimpact
             </a><br/>
 
             <a href="https://www.instagram.com/samvaadfromideastoimpact/" target="_blank">
-              <img src="../socialLogos/instagram.png" alt="Instagram" style="width: 20px; vertical-align: middle; margin-right: 8px;" />
+              <img src="https://samvaadconnect.com/icons/instagram.png" alt="Instagram" style="width: 20px; vertical-align: middle; margin-right: 8px;" />
               samvaadfromideastoimpact
             </a><br/>
 
             <a href="https://youtube.com/@samvaad-fromideastoimpact?si=GoaV__RHR20Mi6oV" target="_blank">
-              <img src="../socialLogos/youtube.png" alt="YouTube" style="width: 20px; vertical-align: middle; margin-right: 8px;" />
+              <img src="https://samvaadconnect.com/icons/youtube.png" alt="YouTube" style="width: 20px; vertical-align: middle; margin-right: 8px;" />
               samvaad-fromideastoimpact
             </a><br/>
 
             <a href="https://www.facebook.com/profile.php?id=61576717783045" target="_blank">
-              <img src="../socialLogos/facebook.png" alt="Facebook" style="width: 20px; vertical-align: middle; margin-right: 8px;" />
+              <img src="https://samvaadconnect.com/icons/facebook.png" alt="Facebook" style="width: 20px; vertical-align: middle; margin-right: 8px;" />
               samvaad
             </a>
           </p>
@@ -63,7 +63,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         </div>
       `,
     });
-    console.log("User email response:", userResponse);
+    console.log("✅ User email response:");
+    console.log(JSON.stringify(userResponse, null, 2));
 
     // ✅ Team Email
     console.log("Sending team email...");
@@ -94,11 +95,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         </div>
       `,
     });
-    console.log("Team email response:", teamResponse);
+    console.log("✅ Team email response:");
+    console.log(JSON.stringify(teamResponse, null, 2));
 
     return res.status(200).json({ success: true });
   } catch (error: any) {
-    console.error("Resend error:", error);
+    console.error("Resend error:", JSON.stringify(error, Object.getOwnPropertyNames(error), 2));
     return res.status(500).json({ error: "Failed to send email" });
   }
 }

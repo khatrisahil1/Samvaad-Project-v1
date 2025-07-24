@@ -57,8 +57,11 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
-      if (!res.ok) throw new Error("Failed to send email");
+      const responseData = await res.json();
+      if (!res.ok) {
+        console.error("Email sending failed. Status:", res.status, "Details:", responseData);
+        throw new Error("Failed to send email");
+      }
 
       alert("Form submitted!");
 
