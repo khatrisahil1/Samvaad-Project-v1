@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { database, ref, push, set } from "../../../lib/firebase";
-import { sendEmail } from "../../backend/utils/sendEmail"; 
 
 interface ModalProps {
   isOpen: boolean;
@@ -23,7 +22,9 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -38,6 +39,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     }
 
     try {
+      // 1. Save to Firebase
       const contactFormRef = ref(database, "contactForm-bwit");
       const newContactRef = push(contactFormRef);
 
@@ -49,13 +51,20 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         Message_Content: formData.message,
       });
 
-      // ✅ Show alert and confirmation
+      // 2. Send emails to both user and team via /api/send
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Failed to send email");
+
       alert("Form submitted!");
 
       setShowConfirmation(true);
       setTimeout(() => setShowConfirmation(false), 3000);
 
-      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -70,6 +79,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       alert("Something went wrong. Please try again.");
     }
   };
+
 
   return (
     <>
